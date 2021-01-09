@@ -1,7 +1,7 @@
 {
   "name": "learn-express-twitter-oauth1",
   "version": "0.1.0",
-  "description": "Express 4.x app using Passport for authentication with Twitter.",
+  "description": "Express app using Passport for authentication with Twitter OAuth 1.0.",
   "keywords": [
     "example",
     "express",
