@@ -10,15 +10,17 @@ To install this example on your computer, clone the repository and install
 dependencies.
 
 ```bash
-$ git clone git@github.com:passport/express-4.x-twitter-example.git
-$ cd express-4.x-twitter-example
+$ git clone git@github.com:nsvirk/learn-express-twitter-oauth1.git
+$ cd learn-express-twitter-oauth1
 $ npm install
 ```
 
 ### Setup Twitter Consumer Key & Secret
 #### Create .env file in the root folder
->> Add TWITTER_CONSUMER_KEY="xxxxxx" 
->> Add TWITTER_CONSUMER_SECRET="xxxxxx"
+```bash
+TWITTER_CONSUMER_KEY="xxxxxx" 
+TWITTER_CONSUMER_SECRET="xxxxxx"
+```
 
 ### Run Server
 ```bash
