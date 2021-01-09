@@ -19,12 +19,12 @@ if (process.env.DYNO) {
 // with a user object, which will be set at `req.user` in route handlers after
 // authentication.
 passport.use(new Strategy({
-    consumerKey: process.env['TWITTER_CONSUMER_KEY'],
-    consumerSecret: process.env['TWITTER_CONSUMER_SECRET'],
-    callbackURL: '/oauth/callback',
-    proxy: trustProxy
-  },
-  function(token, tokenSecret, profile, cb) {
+  consumerKey: process.env['TWITTER_CONSUMER_KEY'],
+  consumerSecret: process.env['TWITTER_CONSUMER_SECRET'],
+  callbackURL: '/oauth/callback',
+  proxy: trustProxy
+},
+  function (token, tokenSecret, profile, cb) {
     // In this example, the user's Twitter profile is supplied as the user
     // record.  In a production-quality application, the Twitter profile should
     // be associated with a user record in the application's database, which
@@ -43,11 +43,11 @@ passport.use(new Strategy({
 // from the database when deserializing.  However, due to the fact that this
 // example does not have a database, the complete Twitter profile is serialized
 // and deserialized.
-passport.serializeUser(function(user, cb) {
+passport.serializeUser(function (user, cb) {
   cb(null, user);
 });
 
-passport.deserializeUser(function(obj, cb) {
+passport.deserializeUser(function (obj, cb) {
   cb(null, obj);
 });
 
@@ -73,12 +73,12 @@ app.use(passport.session());
 
 // Define routes.
 app.get('/',
-  function(req, res) {
+  function (req, res) {
     res.render('home', { user: req.user });
   });
 
 app.get('/login',
-  function(req, res){
+  function (req, res) {
     console.log('ENV');
     console.log(process.env);
     console.log('Headers:');
@@ -91,21 +91,21 @@ app.get('/login/twitter',
 
 app.get('/oauth/callback',
   passport.authenticate('twitter', { failureRedirect: '/login' }),
-  function(req, res) {
+  function (req, res) {
     res.redirect('/');
   });
 
 app.get('/profile',
   require('connect-ensure-login').ensureLoggedIn(),
-  function(req, res){
+  function (req, res) {
     res.render('profile', { user: req.user });
   });
 
 app.get('/logout',
-  function(req, res){
+  function (req, res) {
     req.session.destroy(function (err) {
       res.redirect('/');
     });
   });
 
-app.listen(process.env['PORT'] || 8080);
+app.listen(process.env['PORT'] || 8080, () => { console.log('Server running on 8080') });
