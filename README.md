@@ -20,6 +20,8 @@ $ npm install
 ### Setup Twitter Consumer Key & Secret
 #### Create .env file in the root folder
 ```bash
+touch .env
+
 TWITTER_CONSUMER_KEY="xxxxxx" 
 TWITTER_CONSUMER_SECRET="xxxxxx"
 ```
